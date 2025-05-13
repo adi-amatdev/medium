@@ -1,9 +1,9 @@
 import { Hono } from 'hono'
+import { router as medium } from './routes';
 
 const app = new Hono()
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+app.route("/api/v1",medium);
+
 
 export default app

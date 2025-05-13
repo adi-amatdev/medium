@@ -1,2 +1,1 @@
-docker build -t hono-app .
-docker run -it -p 8787:8787 hono-app --host 0.0.0.0
+docker build -t hono-app . && docker run -it -p 8787:8787 hono-app 
