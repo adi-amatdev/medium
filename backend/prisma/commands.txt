@@ -1,3 +1,4 @@
 npx prisma init 
 npx prisma migrate dev --name {unique_name}
 npx prisma generate --no-engine
+npm install @prisma/extension-accelerate

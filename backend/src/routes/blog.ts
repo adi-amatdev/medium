@@ -3,11 +3,11 @@ import { Hono } from "hono";
 export const blog = new Hono();
 
 blog.post("/", c =>{
-
+    return c.json({});
 });
 
 blog.put("/", c =>{
-
+    return c.json({});
 });
 
 blog.get("/:id",c =>{
@@ -15,5 +15,5 @@ blog.get("/:id",c =>{
 });
 
 blog.get("/bulk",c =>{
-
+    return c.json({});
 });
