@@ -26,8 +26,9 @@ user.post("/signup", async c =>{
         return c.json({token:jwt});
 
     } catch (error) {
+        console.log(error);
         c.status(403);
-        return c.json({mesg:"Error while signing up"});
+        return c.json({mesg:"Error while signing up "});
     }
 });
 

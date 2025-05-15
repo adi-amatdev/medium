@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { router as medium } from './routes';
+import { router as medium } from './services';
 
 const app = new Hono()
 

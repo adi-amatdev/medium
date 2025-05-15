@@ -1,6 +1,9 @@
 import { Hono } from "hono";
+import { checkToken } from "../middleware/auth";
 
 export const blog = new Hono();
+
+blog.use("/*",checkToken);
 
 blog.post("/", c =>{
     return c.json({});

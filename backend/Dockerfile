@@ -1,8 +1,8 @@
 FROM node:20-bookworm
 
 # System dependencies
-RUN apt-get update && apt-get install -y git curl \
-  && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && apt-get install -y git curl \
+#   && rm -rf /var/lib/apt/lists/*
 
 # Set working dir
 WORKDIR /app
@@ -10,13 +10,14 @@ WORKDIR /app
 # Install global dependencies (cached)
 RUN npm install -g wrangler
 
-# Copy package files and install only dependencies (cached separately)
+# # Copy package files and install only dependencies (cached separately)
 COPY package*.json ./
-RUN npm ci --omit=dev
+# RUN npm ci --omit=dev
+RUN npm install
 
 # Copy only Prisma files and generate client
 COPY prisma ./prisma
-RUN npx prisma generate
+RUN npx prisma generate --no-engine
 
 # Finally, copy the rest of the app (source code changes most often)
 COPY . .
