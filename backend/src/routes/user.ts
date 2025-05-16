@@ -2,17 +2,17 @@ import { Hono } from "hono";
 import { prismaInit } from "../dbConnector";
 import { sign } from "hono/jwt";
 
-export const user = new Hono<{
+export const userRouter = new Hono<{
     Bindings:{
         DATABASE_URL:string,
         JWT_SECRET: string
     }
 }>();
 
-user.post("/signup", async c =>{
+userRouter.post("/signup", async c =>{
     const prisma = prismaInit(c.env.DATABASE_URL);
-    const body = await c.req.json();
     try {
+        const body = await c.req.json();
         const user = await prisma.user.create({
             data:{
                 email: body.email,
@@ -27,14 +27,16 @@ user.post("/signup", async c =>{
 
     } catch (error) {
         console.log(error);
-        c.status(403);
-        return c.json({mesg:"Error while signing up "});
+        c.status(411);
+        return c.json({mesg:"Invalid"});
+    }finally{
+        await prisma.$disconnect();
     }
 });
 
-user.post("/signin", async c =>{
+userRouter.post("/signin", async c =>{
+    const prisma = prismaInit(c.env.DATABASE_URL);
     try {
-        const prisma = prismaInit(c.env.DATABASE_URL);
         const {email , password} = await c.req.json();
         const user = await prisma.user.findUnique({
             where:{
@@ -51,6 +53,8 @@ user.post("/signin", async c =>{
     } catch (error) {
         c.json(403);
         return c.json({mesg:"unable to login"})
+    }finally{
+        await prisma.$disconnect();
     }
 });
 

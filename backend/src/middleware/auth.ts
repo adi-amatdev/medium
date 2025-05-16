@@ -6,6 +6,7 @@ export const checkToken = async ( c: Context , next: Next ) =>{
         const jwt: string = c.req.header("Authorization")?.split(" ")[1] || "";
         const response = await verify(jwt, c.env.JWT_SECRET);
         if(response.id){
+            c.set('userId',response.id);
             await next();
         }else{
             c.status(403);
