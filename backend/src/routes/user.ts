@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { prismaInit } from "../dbConnector";
 import { sign } from "hono/jwt";
+import { signupSchema, signinSchema } from "@adi-amatdev/medium-common";
 
 export const userRouter = new Hono<{
     Bindings:{
@@ -9,15 +10,21 @@ export const userRouter = new Hono<{
     }
 }>();
 
+//password hashing
 userRouter.post("/signup", async c =>{
     const prisma = prismaInit(c.env.DATABASE_URL);
     try {
         const body = await c.req.json();
+        const {success, data} = signupSchema.safeParse(body);
+        if(!success){
+            c.status(411);
+            return c.json({message:"Incorrect inputs"});
+        }
         const user = await prisma.user.create({
             data:{
-                email: body.email,
-                name: body.name,
-                password: body.password
+                email: data.email,
+                name: data.name,
+                password: data.password
             }
         });
         const jwt = await sign({id: user.id},c.env.JWT_SECRET);
@@ -37,10 +44,15 @@ userRouter.post("/signup", async c =>{
 userRouter.post("/signin", async c =>{
     const prisma = prismaInit(c.env.DATABASE_URL);
     try {
-        const {email , password} = await c.req.json();
+        const body = await c.req.json();
+        const {success, data} = signinSchema.safeParse(body);
+        if(!success){
+            c.status(411);
+            return c.json({message:"Incorrect inputs"});
+        }
         const user = await prisma.user.findUnique({
             where:{
-                email: email
+                email: data.email
             }
         });
         if(!user){

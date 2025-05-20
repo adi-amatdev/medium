@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { checkToken } from "../middleware/auth";
 import { prismaInit } from "../dbConnector";
+import { blogSchema,blogUpdateSchema } from "@adi-amatdev/medium-common";
 
 export const blogRouter = new Hono<{
     Bindings:{
@@ -15,12 +16,18 @@ blogRouter.use("/*",checkToken);
 
 blogRouter.post("/",async c =>{
     const prisma = prismaInit(c.env.DATABASE_URL);
+    
     try {
         const body = await c.req.json();
+        const {success, data} = blogSchema.safeParse(body);
+        if(!success){
+            c.status(411);
+            return c.json({message:"Incorrect inputs"});
+        }
         const blog = await prisma.blog.create({
             data:{
-                title: body.title,
-                content: body.content,
+                title: data.title,
+                content: data.content,
                 authorId: c.get("userId")
             }
         });
@@ -38,13 +45,18 @@ blogRouter.put("/",async c =>{
     const prisma = prismaInit(c.env.DATABASE_URL);
     try {
         const body = await c.req.json();
+        const {success,data} = blogUpdateSchema.safeParse(body);
+        if(!success){
+            c.status(411);
+            return c.json({message:"Incorrect inputs"});
+        }
         const blog = await prisma.blog.update({
             where:{
-                id: body.id 
+                id: data.id 
             },
             data:{
-                title: body.title,
-                content: body.content,
+                title: data.title,
+                content: data.content,
             }
         });
         return c.json({id : blog.id});
