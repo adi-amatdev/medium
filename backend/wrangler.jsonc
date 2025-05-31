@@ -7,8 +7,7 @@
   //   "nodejs_compat"
   // ],
   "vars": {
-    "DATABASE_URL": "",
-    "JWT_SECRET":""
+   
   }
   // "kv_namespaces": [
   //   {
