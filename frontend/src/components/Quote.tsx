@@ -3,7 +3,7 @@
 const Quote = () => {
   return (
     <div className="hidden bg-slate-200 lg:h-screen lg:flex lg:justify-center lg:flex-col">
-        <div className="flex justify-center">
+        <div className="mx-10 flex justify-center">
            <div className="max-w-lg text-left align-center ">
                  <p className="text-2xl font-medium">
                 "The customer service I recieved was exceptional. The support team went above and beyond to address my concerns."
