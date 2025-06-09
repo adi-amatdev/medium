@@ -27,7 +27,7 @@ export const signupService =  async (c: Context) =>{
 
     } catch (error) {
         console.log(error);
-        c.status(411);
+        c.status(400);
         return c.json({mesg:"Invalid"});
     }finally{
         await prisma.$disconnect();
@@ -56,7 +56,7 @@ export const signinService = async (c: Context) =>{
         c.status(200);
         return c.json(jwt);
     } catch (error) {
-        c.json(403);
+        c.json(404);
         return c.json({mesg:"unable to login"})
     }finally{
         await prisma.$disconnect();

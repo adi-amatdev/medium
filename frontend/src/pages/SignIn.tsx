@@ -1,10 +1,10 @@
 import Quote from "../components/Quote"
-import Auth from "../components/Auth"
+import { SignInComponent } from "../components/Auth"
 
 const SignIn = () => {
   return (
-    <div className="grid grid-cols-2">
-      <Auth type='signin'/>
+    <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+      <SignInComponent />
       <Quote />
     </div>
   )
