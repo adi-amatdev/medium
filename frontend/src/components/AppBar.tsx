@@ -7,7 +7,7 @@ const AppBar = () => {
             Medium
         </div>
         <div>
-            <Avatar name="name" size={10} textSize="lg" />
+            <Avatar name="name" size={9} textSize="lg" />
             
         </div>
         
