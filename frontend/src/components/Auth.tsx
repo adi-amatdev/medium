@@ -4,7 +4,7 @@ import { useState } from "react"
 import type { signinTypes, signupTypes } from "@adi-amatdev/medium-common"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
-import {DATA_URL} from "../../config"
+import {BACKEND_URL} from "../../config"
 
 
 export const SignUpComponent = () => {
@@ -17,7 +17,7 @@ export const SignUpComponent = () => {
   
   const postPayload = async ()=>{
     try {
-      const response = axios.post(`${DATA_URL}/user/signup`,payload);
+      const response = axios.post(`${BACKEND_URL}/user/signup`,payload);
       const jwt = (await response).data;
       localStorage.setItem("jwt",jwt);
       nav('/blogs');
@@ -84,7 +84,7 @@ export const SignInComponent = () => {
   
   const postPayload = async ()=>{
     try {
-      const response = axios.post(`${DATA_URL}/user/signin`,payload);
+      const response = axios.post(`${BACKEND_URL}/user/signin`,payload);
       const jwt = (await response).data;
       localStorage.setItem("jwt",jwt);
       nav('/blogs');

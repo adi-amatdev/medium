@@ -63,7 +63,18 @@ export const blogUpdateService = async (c:Context) =>{
 export const blogBulkFetchService = async (c:Context) =>{
     const prisma = prismaInit(c.env.DATABASE_URL);
     try {
-        const blogs = await prisma.blog.findMany();
+        const blogs = await prisma.blog.findMany({
+            select:{
+                title: true,
+                content: true,
+                id: true,
+                author:{
+                    select:{
+                        name: true
+                    }
+                }
+            }
+        });
         c.status(200);
         return c.json({blogs});
     } catch (error) {
