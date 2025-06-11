@@ -9,9 +9,13 @@ export const useBlogs = ()=>{
 
     useEffect( ()=>{
         async function getBlogs() {
-            const response = await axios.get(`${BACKEND_URL}/blog/bulk`);
+            const response = await axios.get(`${BACKEND_URL}/blog/bulk`,{
+                headers:{
+                    Authorization: `Bearer ${localStorage.getItem("jwt")}`
+                }
+            });
             const data = await response.data;
-            setBlogs(data);
+            setBlogs(data.blogs);
             setLoading(false);
         }
         getBlogs();

@@ -4,7 +4,15 @@ import { useBlogs } from "../hooks/blogs"
 
 
 const Blogs = () => {
-  const {loading, blogs} = useBlogs();
+  type Blog = {
+    author: {
+      name?: string;
+    };
+    title: string;
+    content: string;
+  };
+
+  const {loading, blogs} = useBlogs() as { loading: boolean; blogs: Blog[] };
   if(loading){
     return (
       <div>
