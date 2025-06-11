@@ -2,11 +2,11 @@ import Avatar from "./Avatar"
 
 const AppBar = () => {
   return (
-    <div className="border-b border-gray-300 flex justify-between px-10 py-4">
-        <div className="text-2xl">
+    <div className="border-b border-gray-300 flex justify-between py-4">
+        <div className="pl-3 text-2xl">
             Medium
         </div>
-        <div>
+        <div className="pr-3">
             <Avatar name="name" size={9} textSize="lg" />
             
         </div>
