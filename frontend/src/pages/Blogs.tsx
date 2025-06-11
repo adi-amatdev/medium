@@ -26,7 +26,7 @@ const Blogs = () => {
     <div>
       <AppBar />
       <div className="flex justify-center">
-        <div className="min-w-md hover:cursor-pointer">
+        <div className="min-w-md cursor-pointer">
           {blogs.map((blog)=>(
             <BlogCard 
               id={blog.id}
