@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { useBlog, type Blogs } from "../hooks/blogs";
+import { useBlog, type BlogsTypes } from "../hooks/blogs";
 import BlogPage from "../components/BlogPage";
 import BlogPageSkeleton from "../components/BlogPageSkeleton";
 
@@ -7,7 +7,7 @@ import BlogPageSkeleton from "../components/BlogPageSkeleton";
 
 const Blog = () => {
   const { id } = useParams<{id: string}>();
-  const { loading, blog }  = useBlog(id ? { id } : { id: "" }) as { loading: boolean; blog: Blogs | undefined };
+  const { loading, blog }  = useBlog(id ? { id } : { id: "" }) as { loading: boolean; blog: BlogsTypes | undefined };
 
   if(loading){
     return (

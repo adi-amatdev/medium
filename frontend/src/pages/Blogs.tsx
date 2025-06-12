@@ -1,12 +1,12 @@
 import AppBar from "../components/AppBar"
 import BlogCard from "../components/BlogCard"
 import BlogCardSkeleton from "../components/BlogCardSkeleton"
-import { useBlogs, type Blogs } from "../hooks/blogs"
+import { useBlogs, type BlogsTypes } from "../hooks/blogs"
 
 
 const Blogs = () => {
 
-  const {loading, blogs} = useBlogs() as { loading: boolean; blogs: Blogs[] };
+  const {loading, blogs} = useBlogs() as { loading: boolean; blogs: BlogsTypes[] };
   if(loading){
     return (
       <div>

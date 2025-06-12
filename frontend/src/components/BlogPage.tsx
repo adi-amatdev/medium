@@ -1,9 +1,9 @@
-import type { Blogs } from "../hooks/blogs"
+import type { BlogsTypes } from "../hooks/blogs"
 import AppBar from "./AppBar"
 import Avatar from "./Avatar"
 
 
-export const BlogPage = ({blog}:{blog:Blogs}) => {
+export const BlogPage = ({blog}:{blog:BlogsTypes}) => {
   return (
     <div>
         <AppBar />

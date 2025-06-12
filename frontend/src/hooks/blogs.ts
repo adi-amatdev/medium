@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { BACKEND_URL } from "../../config";
 
 
-export type Blogs = {
+export type BlogsTypes = {
     author: {
       name?: string ; 
       bio ?: string;
