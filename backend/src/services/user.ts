@@ -22,8 +22,8 @@ export const signupService =  async (c: Context) =>{
         });
         const jwt = await sign({id: user.id},c.env.JWT_SECRET);
         
-        c.status(200)
-        return c.json({token:jwt});
+        c.status(200);
+        return c.json(jwt);
 
     } catch (error) {
         console.log(error);

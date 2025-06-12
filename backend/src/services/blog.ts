@@ -91,6 +91,16 @@ export const blogFetchService = async (c:Context) =>{
             where:{
                 id: id
             }
+            ,select:{
+                title: true,
+                content: true,
+                id: true,
+                author:{
+                    select:{
+                        name: true
+                    }
+                }
+            }
         });
         c.status(200);
         return c.json({blog});

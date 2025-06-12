@@ -22,7 +22,7 @@ const InputBox = ({label, placeholder, onChange, type, isPassword}:InputBoxProps
                 <input 
                   onChange={onChange} 
                   type={inputType} 
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 transition-all duration-300 ease-in-out hover:shadow-md hover:-translate-y-0.5" 
                   placeholder={placeholder} 
                   required 
                 />
@@ -37,7 +37,7 @@ const InputBox = ({label, placeholder, onChange, type, isPassword}:InputBoxProps
               <input 
                 onChange={onChange} 
                 type={label.toLowerCase() === 'email'?'email':inputType} 
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 transition-all duration-300 ease-in-out hover:shadow-md hover:-translate-y-0.5" 
                 placeholder={placeholder} 
                 required 
               />
