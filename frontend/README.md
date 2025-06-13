@@ -11,3 +11,5 @@
 5. Adding spinners on submission <br>
 
 6. cache fetched blogs <br>
+
+7. Better error displays <br>
