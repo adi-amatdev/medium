@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import AppBar from "../components/AppBar"
 import BlogCard from "../components/BlogCard"
 import BlogCardSkeleton from "../components/BlogCardSkeleton"
@@ -22,12 +24,20 @@ const Blogs = () => {
     )
   }
 
+  if(blogs.length === 0){
+    console.log("no blogs");
+    toast.error("No Blogs exist create new one", {
+        position:'top-right',
+        toastId:'no-blogs'
+    });
+  }
+
   return (
     <div>
       <AppBar />
       <div className="flex justify-center">
         <div className="min-w-md mt-3 mb-4">
-          {blogs.map((blog)=>(
+          {blogs.length > 0  && (blogs.map((blog)=>(
             <BlogCard 
               id={blog.id}
               authorName={blog.author.name || "Anonymous"} 
@@ -39,7 +49,7 @@ const Blogs = () => {
                                     day: "numeric",
                                 })} 
             />
-          ))}        
+          )))}        
         </div>
       </div>
     </div>

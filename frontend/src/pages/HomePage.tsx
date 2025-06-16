@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-white">
       <nav className="border-b border-gray-200 px-6 py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold">Medium</div>
+        <div className="text-2xl font-mono">Medium</div>
         <div className="flex gap-4 items-center">
           <Link to="/signin" className="text-gray-600 hover:text-gray-900">Sign In</Link>
           <Link to="/signup" className="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition-colors">
@@ -15,7 +15,7 @@ const HomePage = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="max-w-5xl mx-auto px-6 py-16 md:py-24">
+      <section className="max-w-5xl mx-auto px-6 py-16 md:py-5">
         <h1 className="text-5xl md:text-7xl font-bold mb-6">Stay curious.</h1>
         <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-xl">
           Discover stories, thinking, and expertise from writers on any topic.
@@ -36,50 +36,34 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "How to build a Medium clone with React and Node.js",
-                author: "John Doe",
-                date: "Jun 12",
+                title: "Frontend Engineer’s Checklist for Implementing RBAC in an Enterprise SaaS Application",
+                author: "Aaditya",
+                date: "June 16th",
                 readTime: "5 min"
               },
               {
-                title: "10 Tips for Better React Performance",
-                author: "Jane Smith",
-                date: "Jun 10",
+                title: "Using Service Workers to Improve Audio Asset Load Times",
+                author: "user",
+                date: "Jun 16",
                 readTime: "7 min"
               },
               {
-                title: "Understanding TypeScript Generics",
-                author: "Alex Johnson",
-                date: "Jun 8",
+                title: "The Role of GenAI and LLMs at Kustomer",
+                author: "joe doe",
+                date: "Jun 16",
                 readTime: "4 min"
-              },
-              {
-                title: "The Future of Web Development",
-                author: "Sarah Williams",
-                date: "Jun 5",
-                readTime: "6 min"
-              },
-              {
-                title: "Building Scalable Backend Systems",
-                author: "Mike Brown",
-                date: "Jun 3",
-                readTime: "8 min"
-              },
-              {
-                title: "CSS Grid vs Flexbox: When to Use Each",
-                author: "Emily Davis",
-                date: "Jun 1",
-                readTime: "5 min"
               }
             ].map((post, index) => (
-              <TrendingPost 
-                key={index}
-                number={index + 1}
-                author={post.author}
-                title={post.title}
-                date={post.date}
-                readTime={post.readTime}
-              />
+              <Link to={`/blogs`}>
+                <TrendingPost 
+                  key={index}
+                  number={index + 1}
+                  author={post.author}
+                  title={post.title}
+                  date={post.date}
+                  readTime={post.readTime}
+                />
+              </Link>
             ))}
           </div>
         </div>

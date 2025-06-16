@@ -1,6 +1,19 @@
+import { toast } from "react-toastify"
 
 
 const Quote = () => {
+  toast.info( <>
+      For testing please use:
+      <br />
+      Email: user@gmail.com
+      <br />
+      Password: password
+    </>,{
+    delay: 100,
+    autoClose: 10000,
+    position:'top-right',
+    toastId:'test-credentials'
+  })
   return (
     <div className="hidden bg-slate-200 lg:h-screen lg:flex lg:justify-center lg:flex-col">
         <div className="mx-10 flex justify-center">

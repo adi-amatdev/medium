@@ -35,7 +35,7 @@ const BlogCard = ({
           </div>
         </div>
         <div className="pt-2">
-          <div className="text-2xl md:text-3xl lg:text-4xl font-semibold font-mono">
+          <div className="text-2xl md:text-3xl lg:text-4xl font-semibold font-serif">
             {title}
           </div>
           <div className="pt-2 font-thin text-sm md:text-md">

@@ -12,4 +12,6 @@
 
 6. cache fetched blogs <br>
 
-7. Better error displays <br>
+7. Better Information & error displays <br>
+
+8. Better homepage UI's 
